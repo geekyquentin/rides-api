@@ -1,0 +1,58 @@
+.card,
+.cardLeft,
+.cardRight {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.card {
+	background: #171717;
+	border-radius: 10px;
+	margin: 1rem 3rem;
+	font-size: 1.125rem;
+}
+
+.cardLeft {
+	align-items: center;
+}
+
+.card,
+.cardRight {
+	justify-content: space-between;
+}
+
+.card p {
+	color: #cfcfcf;
+}
+
+.card span {
+	color: #fff;
+	font-weight: 500;
+}
+
+.cardContent {
+	line-height: 2rem;
+}
+
+.cardImage {
+	border-radius: 5px;
+}
+
+.carfLeft,
+.cardRight,
+.cardImageContainer,
+.cardContent {
+	margin: 1.25rem;
+}
+
+.cardRight span {
+	background: rgba(0, 0, 0, 0.56);
+	border-radius: 16px;
+	padding: 0.5rem 1rem;
+	align-self: flex-start;
+}
+
+.cardRight span:first-child {
+	margin-right: 1.5rem;
+}

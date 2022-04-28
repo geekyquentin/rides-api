@@ -1,0 +1,36 @@
+@import url('http://fonts.cdnfonts.com/css/sf-pro-display');
+
+.header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	background: #101010;
+	padding: 1.2rem 3rem;
+	align-items: center;
+}
+
+.header .name {
+	font-weight: 700;
+	color: #fff;
+}
+
+.header > .name {
+	font-family: 'SF Pro Display';
+	font-size: 2.25rem;
+}
+
+.header .user {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.header .user .logo {
+	border-radius: 50%;
+}
+
+.header .user .name {
+	margin-right: 1.5rem;
+	font-size: 1.25rem;
+}

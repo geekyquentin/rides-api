@@ -1,0 +1,34 @@
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 2rem 3rem;
+}
+
+.navbar button {
+	font-size: 1.125rem;
+	background: none;
+	border: none;
+}
+
+.navbar .items {
+	display: flex;
+	flex-direction: row;
+}
+
+.navbar .items button {
+	margin-right: 3rem;
+	color: #d0cbcb;
+	font-weight: 700;
+}
+
+.navbar .items button,
+.selected {
+	color: #fff;
+	border-bottom: #fff;
+}
+
+.navbar .filter button {
+	color: #f2f2f2;
+	font-weight: 500;
+}
