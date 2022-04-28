@@ -11,10 +11,20 @@ export const getStaticProps = async () => {
 	const resUser = await fetch('https://assessment.api.vweb.app/user')
 	const dataUser = await resUser.json()
 
+	const GetDistance = (path, code) => {
+		var distance = Infinity
+		for (var i = 0; i < path.length; i++) {
+			distance = Math.min(distance, Math.abs(path[i] - code))
+		}
+
+		return distance
+	}
+
 	const newData = data.map(dataItem => {
 		return {
 			...dataItem,
 			uid: uuid(),
+			distance: GetDistance(dataItem.station_path, dataUser.station_code)
 		}
 	})
 
@@ -33,26 +43,9 @@ export default function Home({ rides, user }) {
 	const [currList, setCurrList] = useState([])
 
 	useEffect(() => {
-		const SortByUserDestination = (a, b) => {
-			let diffMin = [Infinity, Infinity], minIndex = [0, 0], curr = [a, b]
-
-			for (let i = 0; i < 2; i++) {
-				for (let j = 0; j < curr[i].station_path.length; j++) {
-					let diff = Math.abs(curr[i].station_path[j] - user.station_code)
-
-					if (diff < diffMin[i]) {
-						diffMin[i] = diff
-						minIndex[i] = j
-					}
-				}
-			}
-
-			return diffMin[0] == diffMin[1] ? minIndex[0] - minIndex[1] : diffMin[0] - diffMin[1]
-		}
-
 		const getSortedList = () => {
 			const sortedRides = [...rides]
-			return sortedRides.sort(SortByUserDestination)
+			return sortedRides.sort((a, b) => a.distance - b.distance)
 		}
 
 		const getUpcomingList = () => {

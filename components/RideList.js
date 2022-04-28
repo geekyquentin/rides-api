@@ -27,11 +27,11 @@ const RideList = ({ rides }) => {
                                 <Image className={styles.cardImage} src={ride.map_url} alt="map" width={296} height={153} />
                             </div>
                             <div className={styles.cardContent}>
-                                <p>id: <span>{ride.id}</span></p>
-                                <p>origin station code: <span>{ride.origin_station_code}</span></p>
-                                <p>station path: <span>{getStationPath(ride)}</span></p>
-                                <p>destination station code: <span>{ride.destination_station_code}</span></p>
-                                <p>date: <span>{ride.date}</span></p>
+                                <p>Ride Id : <span>{ride.id}</span></p>
+                                <p>Origin Station : <span>{ride.origin_station_code}</span></p>
+                                <p>station_path : <span>{getStationPath(ride)}</span></p>
+                                <p>Date : <span>{ride.date}</span></p>
+                                <p>Distance : <span>{ride.distance}</span></p>
                             </div>
                         </div>
                         <div className={styles.cardRight}>
