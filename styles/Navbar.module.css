@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: 2rem 3rem;
+	margin-top: 1rem;
 }
 
 .navbar button {
@@ -20,6 +20,10 @@
 	margin-right: 3rem;
 	color: #d0cbcb;
 	font-weight: 700;
+}
+
+.navbar .items button:last-child {
+	margin-right: 0;
 }
 
 .navbar .items button,

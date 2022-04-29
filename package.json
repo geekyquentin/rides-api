@@ -12,6 +12,7 @@
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-responsive": "^9.0.0-beta.6",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {

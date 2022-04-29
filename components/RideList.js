@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import EmptyList from './EmptyList'
 import styles from '../styles/RideList.module.css'
+import cstyles from '../styles/Common.module.css'
 
 const RideList = ({ rides }) => {
     const getStationPath = (path) => {
@@ -39,10 +40,10 @@ const RideList = ({ rides }) => {
     }
 
     return (
-        <>
+        <div className={cstyles.container}>
             {(rides.length > 0)
                 ? rides.map(ride => (
-                    <div key={ride.uid} className={styles.card}>
+                    <div key={ride.uid} className={styles.card} >
                         <div className={styles.cardLeft}>
                             <div className={styles.cardImageContainer}>
                                 <Image className={styles.cardImage} src={ride.map_url} alt="map" width={296} height={153} />
@@ -62,7 +63,7 @@ const RideList = ({ rides }) => {
                     </div>
                 ))
                 : <EmptyList />}
-        </>
+        </div>
     )
 }
 
