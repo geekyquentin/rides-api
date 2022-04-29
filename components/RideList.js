@@ -27,14 +27,18 @@ const RideList = ({ rides }) => {
         }
     }
 
+    const getTwoDigits = (num) => {
+        return num < 10 ? '0' + num : num
+    }
+
     const getDate = (date) => {
         let newDate = new Date(date)
         const tdate = newDate.getDate()
         const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][newDate.getMonth()]
         const year = newDate.getFullYear()
 
-        const hours = newDate.getHours()
-        const minutes = newDate.getMinutes()
+        const hours = getTwoDigits(newDate.getHours())
+        const minutes = getTwoDigits(newDate.getMinutes())
 
         return `${tdate}${nth(tdate)} ${month} ${year} ${hours}:${minutes}`
     }
