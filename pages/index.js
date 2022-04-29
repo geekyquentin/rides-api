@@ -5,8 +5,8 @@ import Navbar from '../components/Navbar'
 import Header from '../components/Header'
 
 export const getStaticProps = async () => {
-	const res = await fetch('https://assessment.api.vweb.app/rides')
-	const data = await res.json()
+	const resRides = await fetch('https://assessment.api.vweb.app/rides')
+	const dataRides = await resRides.json()
 
 	const resUser = await fetch('https://assessment.api.vweb.app/user')
 	const dataUser = await resUser.json()
@@ -20,7 +20,7 @@ export const getStaticProps = async () => {
 		return distance
 	}
 
-	const newData = data.map(dataItem => {
+	const newData = dataRides.map(dataItem => {
 		return {
 			...dataItem,
 			uid: uuid(),
@@ -30,47 +30,34 @@ export const getStaticProps = async () => {
 
 	return {
 		props: {
-			rides: newData,
+			distRides: [...newData].sort((a, b) => a.distance - b.distance),
+			dateRides: [...newData].sort((a, b) => new Date(b.date) - new Date(a.date)),
 			user: dataUser
 		}
 	}
 }
 
-export default function Home({ rides, user }) {
-	const [sortedList, setSortedList] = useState([])
+export default function Home({ distRides, dateRides, user }) {
+	const [currList, setCurrList] = useState(distRides)
 	const [upcomingList, setUpcomingList] = useState([])
 	const [pastList, setPastList] = useState([])
-	const [currList, setCurrList] = useState([])
 
 	useEffect(() => {
-		const getSortedList = () => {
-			const sortedRides = [...rides]
-			return sortedRides.sort((a, b) => a.distance - b.distance)
-		}
-
-		const getUpcomingList = () => {
-			const upcomingRides = rides.filter(ride => new Date(ride.date) > new Date())
-			return upcomingRides.sort((a, b) => new Date(b.date) - new Date(a.date))
-		}
-
-		const getPastList = () => {
-			const pastRides = rides.filter(ride => new Date(ride.date) < new Date())
-			return pastRides.sort((a, b) => new Date(b.date) - new Date(a.date))
-		}
-
-		setSortedList(getSortedList())
-		setUpcomingList(getUpcomingList())
-		setPastList(getPastList())
-		setCurrList(getSortedList())
-	}, [rides, user])
+		setUpcomingList(dateRides.filter(ride => new Date(ride.date) > new Date()))
+		setPastList(dateRides.filter(ride => new Date(ride.date) < new Date()))
+	}, [dateRides])
 
 	const updateList = (option) => {
-		if (option === 'home') {
-			setCurrList(sortedList)
-		} else if (option === 'upcoming-rides') {
-			setCurrList(upcomingList)
-		} else if (option === 'past-rides') {
-			setCurrList(pastList)
+		switch (option) {
+			case 'all':
+				setCurrList(distRides)
+				break
+			case 'upcoming':
+				setCurrList(upcomingList)
+				break
+			case 'past':
+				setCurrList(pastList)
+				break
 		}
 	}
 

@@ -16,9 +16,9 @@ const Navbar = ({ handleClickOption, ulSize, pSize }) => {
 	return (
 		<nav className={`${styles.navbar} ${cstyles.container}`}>
 			<div className={styles.items}>
-				<button onClick={() => handleClick('home')}>Rides</button>
-				<button onClick={() => handleClick('upcoming-rides')}>Upcoming {sz(ulSize)}</button>
-				<button onClick={() => handleClick('past-rides')}>Past {sz(pSize)}</button>
+				<button onClick={() => handleClick('all')}>Rides</button>
+				<button onClick={() => handleClick('upcoming')}>Upcoming {sz(ulSize)}</button>
+				<button onClick={() => handleClick('past')}>Past {sz(pSize)}</button>
 			</div>
 			<div className={styles.filter}>
 				<button>Filter</button>
