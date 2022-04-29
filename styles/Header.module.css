@@ -1,5 +1,3 @@
-@import url('http://fonts.cdnfonts.com/css/sf-pro-display');
-
 .header {
 	display: flex;
 	flex-direction: row;
@@ -15,7 +13,6 @@
 }
 
 .header > .name {
-	font-family: 'SF Pro Display';
 	font-size: 2.25rem;
 }
 
