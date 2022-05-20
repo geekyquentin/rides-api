@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Filter from './Filter'
 import styles from '../styles/Navbar.module.css'
 import cstyles from '../styles/Common.module.css'
 
@@ -20,9 +21,7 @@ const Navbar = ({ handleClickOption, ulSize, pSize }) => {
 				<button onClick={() => handleClick('upcoming')}>Upcoming {sz(ulSize)}</button>
 				<button onClick={() => handleClick('past')}>Past {sz(pSize)}</button>
 			</div>
-			<div className={styles.filter}>
-				<button>Filter</button>
-			</div>
+			{/* <Filter /> */}
 		</nav>
 	)
 }

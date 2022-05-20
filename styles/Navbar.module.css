@@ -7,8 +7,6 @@
 
 .navbar button {
 	font-size: 1.125rem;
-	background: none;
-	border: none;
 }
 
 .navbar .items {
@@ -30,9 +28,4 @@
 .selected {
 	color: #fff;
 	border-bottom: #fff;
-}
-
-.navbar .filter button {
-	color: #f2f2f2;
-	font-weight: 500;
 }

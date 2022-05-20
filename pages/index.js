@@ -28,11 +28,19 @@ export const getStaticProps = async () => {
 		}
 	})
 
+	// return new data with index
+	const newDataWithIndex = newData.map((dataItem, index) => {
+		return {
+			...dataItem,
+			index: index
+		}
+	})
+
 	return {
 		props: {
 			distRides: [...newData].sort((a, b) => a.distance - b.distance),
 			dateRides: [...newData].sort((a, b) => new Date(b.date) - new Date(a.date)),
-			user: dataUser
+			user: dataUser,
 		}
 	}
 }
